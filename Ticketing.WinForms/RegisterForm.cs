@@ -51,7 +51,6 @@ namespace Ticketing.WinForms
             {
                 Name = name,
                 Email = email,
-                Password = password,
                 Role = string.IsNullOrWhiteSpace(role) ? "User" : role
             };
 
