@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             gridPurchases = new DataGridView();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)gridPurchases).BeginInit();
             SuspendLayout();
             // 
@@ -41,16 +42,26 @@
             gridPurchases.Size = new Size(981, 360);
             gridPurchases.TabIndex = 0;
             gridPurchases.CellContentClick += gridPurchases_CellContentClick;
-            this.Load += new System.EventHandler(this.PurchaseHistoryForm_Load);
+            // 
+            // button1
+            // 
+            button1.Location = new Point(414, 409);
+            button1.Name = "button1";
+            button1.Size = new Size(176, 29);
+            button1.TabIndex = 1;
+            button1.Text = "Descargar Ticket";
+            button1.UseVisualStyleBackColor = true;
             // 
             // PurchaseHistoryForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1024, 450);
+            Controls.Add(button1);
             Controls.Add(gridPurchases);
             Name = "PurchaseHistoryForm";
             Text = "Historial de Compras de Tickets";
+            Load += PurchaseHistoryForm_Load;
             ((System.ComponentModel.ISupportInitialize)gridPurchases).EndInit();
             ResumeLayout(false);
         }
@@ -58,5 +69,6 @@
         #endregion
 
         private DataGridView gridPurchases;
+        private Button button1;
     }
 }
