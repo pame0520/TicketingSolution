@@ -63,5 +63,10 @@ namespace Ticketing.WinForms
         {
 
         }
+
+        private void btnRegistrar_Click(object sender, EventArgs e)
+        {
+         
+        }
     }
 }
