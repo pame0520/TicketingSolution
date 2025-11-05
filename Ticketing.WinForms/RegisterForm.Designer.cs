@@ -32,12 +32,12 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            button1 = new Button();
-            button2 = new Button();
+            txtName = new TextBox();
+            txtEmail = new TextBox();
+            txtPassword = new TextBox();
+            txtConfirmPassword = new TextBox();
+            btnCancel = new Button();
+            btnRegister = new Button();
             SuspendLayout();
             // 
             // label1
@@ -76,63 +76,63 @@
             label4.TabIndex = 3;
             label4.Text = "Confirmar Contraseña:";
             // 
-            // textBox1
+            // txtName
             // 
-            textBox1.Location = new Point(27, 49);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(171, 27);
-            textBox1.TabIndex = 4;
+            txtName.Location = new Point(27, 49);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(171, 27);
+            txtName.TabIndex = 4;
             // 
-            // textBox2
+            // txtEmail
             // 
-            textBox2.Location = new Point(27, 115);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(171, 27);
-            textBox2.TabIndex = 5;
+            txtEmail.Location = new Point(27, 115);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(171, 27);
+            txtEmail.TabIndex = 5;
             // 
-            // textBox3
+            // txtPassword
             // 
-            textBox3.Location = new Point(27, 184);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(171, 27);
-            textBox3.TabIndex = 6;
+            txtPassword.Location = new Point(27, 184);
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(171, 27);
+            txtPassword.TabIndex = 6;
             // 
-            // textBox4
+            // txtConfirmPassword
             // 
-            textBox4.Location = new Point(27, 237);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(171, 27);
-            textBox4.TabIndex = 7;
+            txtConfirmPassword.Location = new Point(27, 237);
+            txtConfirmPassword.Name = "txtConfirmPassword";
+            txtConfirmPassword.Size = new Size(171, 27);
+            txtConfirmPassword.TabIndex = 7;
             // 
-            // button1
+            // btnCancel
             // 
-            button1.Location = new Point(27, 284);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 8;
-            button1.Text = "Cancelar";
-            button1.UseVisualStyleBackColor = true;
+            btnCancel.Location = new Point(27, 284);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(94, 29);
+            btnCancel.TabIndex = 8;
+            btnCancel.Text = "Cancelar";
+            btnCancel.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnRegister
             // 
-            button2.Location = new Point(145, 284);
-            button2.Name = "button2";
-            button2.Size = new Size(94, 29);
-            button2.TabIndex = 9;
-            button2.Text = "Confirmar";
-            button2.UseVisualStyleBackColor = true;
+            btnRegister.Location = new Point(145, 284);
+            btnRegister.Name = "btnRegister";
+            btnRegister.Size = new Size(94, 29);
+            btnRegister.TabIndex = 9;
+            btnRegister.Text = "Confirmar";
+            btnRegister.UseVisualStyleBackColor = true;
             // 
             // RegisterForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(284, 331);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(btnRegister);
+            Controls.Add(btnCancel);
+            Controls.Add(txtConfirmPassword);
+            Controls.Add(txtPassword);
+            Controls.Add(txtEmail);
+            Controls.Add(txtName);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -149,11 +149,11 @@
         private Label label2;
         private Label label3;
         private Label label4;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private Button button1;
-        private Button button2;
+        private TextBox txtName;
+        private TextBox txtEmail;
+        private TextBox txtPassword;
+        private TextBox txtConfirmPassword;
+        private Button btnCancel;
+        private Button btnRegister;
     }
 }

@@ -1,20 +1,77 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Ticketing.Domain.Models;
 
 namespace Ticketing.WinForms
 {
     public partial class RegisterForm : Form
     {
-        public RegisterForm()
+        private readonly AppServices _services;
+
+        public RegisterForm(AppServices services)
         {
             InitializeComponent();
+            _services = services;
+        }
+
+        private async void btnRegister_Click(object sender, EventArgs e)
+        {
+            var name = txtName.Text.Trim();
+            var email = txtEmail.Text.Trim();
+            var password = txtPassword.Text;
+            var confirm = txtConfirmPassword?.Text ?? string.Empty;
+            var role = (cmbRole?.SelectedItem?.ToString() ?? "User").Trim();
+
+            if (string.IsNullOrWhiteSpace(name) ||
+                string.IsNullOrWhiteSpace(email) ||
+                string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Por favor complete todos los campos obligatorios.", "Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (password != confirm)
+            {
+                MessageBox.Show("Las contraseñas no coinciden.", "Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Opcional: comprobación simple de longitud de contraseña
+            if (password.Length < 6)
+            {
+                MessageBox.Show("La contraseña debe tener al menos 6 caracteres.", "Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var user = new User
+            {
+                Name = name,
+                Email = email,
+                Password = password,
+                Role = string.IsNullOrWhiteSpace(role) ? "User" : role
+            };
+
+            try
+            {
+                await _services.UserService.RegisterAsync(user);
+                MessageBox.Show("Registro completado correctamente.", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al registrar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
     }
 }
