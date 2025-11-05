@@ -1,0 +1,52 @@
+[
+  {
+    "Id": "e1",
+    "Name": "Concierto Pop",
+    "Date": "2025-11-08T19:56:49.036863",
+    "Venue": "Estadio",
+    "Type": "Música",
+    "TicketsAvailable": 100,
+    "Price": 25000,
+    "Description": "Artista Michael en vivo"
+  },
+  {
+    "Id": "e2",
+    "Name": "Obra Teatro",
+    "Date": "2025-11-13T19:56:49.036863",
+    "Venue": "Teatro",
+    "Type": "Teatro",
+    "TicketsAvailable": 50,
+    "Price": 15000,
+    "Description": "Comedia familiar"
+  },
+  {
+    "Id": "e3",
+    "Name": "Partido de Fútbol: Tigres vs León",
+    "Date": "2025-11-15T18:30:00.000000",
+    "Venue": "Estadio Municipal",
+    "Type": "Deporte",
+    "TicketsAvailable": 120,
+    "Price": 20000,
+    "Description": "Encuentro de liga nacional"
+  },
+  {
+    "Id": "e4",
+    "Name": "Partido de Fútbol: Costa Rica vs Panamá",
+    "Date": "2025-11-20T20:00:00.000000",
+    "Venue": "Estadio Nacional",
+    "Type": "Deporte",
+    "TicketsAvailable": 150,
+    "Price": 30000,
+    "Description": "Clasificatoria internacional"
+  },
+  {
+    "Id": "e5",
+    "Name": "Película: El Viaje Mágico",
+    "Date": "2025-11-25T17:00:00.000000",
+    "Venue": "Cine Central",
+    "Type": "Cine",
+    "TicketsAvailable": 80,
+    "Price": 8000,
+    "Description": "Aventura animada para toda la familia"
+  }
+]

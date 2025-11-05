@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Ticketing.Domain
+{
+    public static class Test
+    {
+        public static string Hello() => "Dominio funcionando correctamente.";
+    }
+}
