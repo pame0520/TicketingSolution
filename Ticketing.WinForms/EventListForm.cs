@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using Ticketing.Domain.Models;
 using Ticketing.Domain.Patterns;
 using Ticketing.Domain.Services;
-using Ticketing.WinForms.Data; // ✅ necesario para acceder a EventForm
+using Ticketing.WinForms.Data; 
 
 namespace Ticketing.WinForms
 {
@@ -69,7 +69,7 @@ namespace Ticketing.WinForms
                 })
                 .ToList();
         }
-        // ✅ Agregar evento
+        // Agregar evento
         private async void btnAddEvent_Click(object sender, EventArgs e)
         {
             using (var frm = new EventForm())
@@ -96,7 +96,7 @@ namespace Ticketing.WinForms
             await LoadEventsAsync("");
         }
 
-        // ✅ Doble click abre formulario de compra
+        // Doble click abre formulario de compra
         private async void gridEvents_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -119,7 +119,7 @@ namespace Ticketing.WinForms
 
   
 
-        // ✅ Editar evento
+        // Editar evento
         private async void btnEditEvent_Click(object sender, EventArgs e)
         {
             if (gridEvents.CurrentRow == null) return;
@@ -144,7 +144,7 @@ namespace Ticketing.WinForms
             }
         }
 
-        // ✅ Eliminar evento
+        // Eliminar evento
         private async void btnDeleteEvent_Click(object sender, EventArgs e)
         {
             if (gridEvents.CurrentRow == null) return;

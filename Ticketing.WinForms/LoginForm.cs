@@ -64,8 +64,19 @@ namespace Ticketing.WinForms
 
         }
 
-  
-
-         
-        }
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            using (var frm = new RegisterForm(_services))
+            {
+                var result = frm.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    // Registro exitoso: informar al usuario y preparar el formulario para iniciar sesión.
+                    MessageBox.Show("Registro completado correctamente. Inicie sesión con sus nuevas credenciales.", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtPassword.Clear();
+                    txtEmail.Focus();
+                }
+            }
+            }
     }
+}

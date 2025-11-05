@@ -34,7 +34,7 @@ namespace Ticketing.WinForms
             var events = (await _services.EventService.GetAllAsync())
                          .ToDictionary(x => x.Id, x => x.Name);
 
-            // 3) Proyectar a la grilla
+            // 3) Proyectar a la tabla
             gridPurchases.DataSource = _items.Select(p => new
             {
                 Evento = events.TryGetValue(p.EventId, out var name) ? name : p.EventId,

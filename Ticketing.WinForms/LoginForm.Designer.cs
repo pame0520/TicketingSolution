@@ -36,7 +36,7 @@
             pictureBox3 = new PictureBox();
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
-            button1 = new Button();
+            btnRegister = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -123,14 +123,15 @@
             pictureBox1.TabIndex = 9;
             pictureBox1.TabStop = false;
             // 
-            // button1
+            // btnRegister
             // 
-            button1.Location = new Point(241, 275);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 10;
-            button1.Text = "Registrarse";
-            button1.UseVisualStyleBackColor = true;
+            btnRegister.Location = new Point(244, 275);
+            btnRegister.Name = "btnRegister";
+            btnRegister.Size = new Size(94, 29);
+            btnRegister.TabIndex = 10;
+            btnRegister.Text = "Registrarse";
+            btnRegister.UseVisualStyleBackColor = true;
+            btnRegister.Click += btnRegister_Click;
             // 
             // LoginForm
             // 
@@ -140,7 +141,7 @@
             BackColor = Color.RosyBrown;
             BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(371, 316);
-            Controls.Add(button1);
+            Controls.Add(btnRegister);
             Controls.Add(pictureBox1);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox3);
@@ -170,6 +171,6 @@
         private PictureBox pictureBox3;
         private PictureBox pictureBox2;
         private PictureBox pictureBox1;
-        private Button button1;
+        private Button btnRegister;
     }
 }

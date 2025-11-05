@@ -16,7 +16,7 @@ namespace Ticketing.Domain.Services
 
         public Task<List<Event>> GetAllAsync() => _repo.GetAllAsync();
 
-       // public Task AddAsync(Event e) => _repo.AddAsync(e);
+    
         public async Task AddAsync(Event e)
         {
             // Generar IDs secuenciales del tipo e1, e2, e3...
@@ -48,15 +48,13 @@ namespace Ticketing.Domain.Services
             x.Description = e.Description;
         });
 
-        // ✅ Método agregado: eliminación de eventos
+        // eliminación de eventos
         public Task DeleteAsync(string id)
         {
             return _repo.DeleteAsync(e => e.Id == id);
         }
 
-        /// <summary>
-        /// Búsqueda con filtros. Cambia recursive=true/false para comparar enfoques.
-        /// </summary>
+        
         public async Task<List<Event>> SearchAsync(
             string? text, DateTime? date, string? type, string? venue, bool recursive = true)
         {

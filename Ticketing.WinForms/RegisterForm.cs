@@ -34,15 +34,15 @@ namespace Ticketing.WinForms
 
             if (password != confirm)
             {
-                MessageBox.Show("Las contraseñas no coinciden.", "Validación",
+                MessageBox.Show("Lo sentimos, las contraseñas no coinciden, vuelve a intentarlo.", "Validación",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Opcional: comprobación simple de longitud de contraseña
-            if (password.Length < 6)
+            // comprobación simple de longitud de contraseña
+            if (password.Length < 4)
             {
-                MessageBox.Show("La contraseña debe tener al menos 6 caracteres.", "Validación",
+                MessageBox.Show("La contraseña debe tener al menos 4 caracteres.", "Validación",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -56,8 +56,9 @@ namespace Ticketing.WinForms
 
             try
             {
-                await _services.UserService.RegisterAsync(user);
-                MessageBox.Show("Registro completado correctamente.", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Ahora pasamos la contraseña en claro; UserService la hasheará.
+                await _services.UserService.RegisterAsync(user, password);
+                MessageBox.Show("Felicidades, EL registro completado correctamente.", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
                 Close();
             }
@@ -71,6 +72,11 @@ namespace Ticketing.WinForms
         {
             DialogResult = DialogResult.Cancel;
             Close();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

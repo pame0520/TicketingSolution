@@ -33,7 +33,7 @@ namespace Ticketing.WinForms.Data
                 txtVenue.Text = e.Venue;
                 txtType.Text = e.Type;
                 numTickets.Value = Math.Max(numTickets.Minimum, Math.Min(numTickets.Maximum, e.TicketsAvailable));
-                // Price es decimal en el modelo: clamar entre min/max de numPrice
+                // Precio es decimal en el modelo: clamar entre min/max de numPrice
                 var priceDecimal = e.Price;
                 if (priceDecimal < numPrice.Minimum) priceDecimal = numPrice.Minimum;
                 if (priceDecimal > numPrice.Maximum) priceDecimal = numPrice.Maximum;

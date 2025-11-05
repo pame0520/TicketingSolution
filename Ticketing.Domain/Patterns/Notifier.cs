@@ -37,7 +37,7 @@ namespace Ticketing.Domain.Patterns
             foreach (var obs in copy)
             {
                 try { obs.OnEventUpdated(message); }
-                catch { /* ignorar observer con errores */ }
+                catch { }
             }
         }
     }

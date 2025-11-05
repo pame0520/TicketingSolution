@@ -22,7 +22,7 @@ namespace Ticketing.Domain.Services
             _eventService = eventService;
         }
 
-        // ✅ Este es el método que faltaba
+        
         public async Task<Purchase> BuyAsync(string userId, Event ev, int quantity, string card)
         {
             if (quantity <= 0)
