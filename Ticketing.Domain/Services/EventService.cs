@@ -10,51 +10,40 @@ namespace Ticketing.Domain.Services
 {
     public class EventService
     {
-        private readonly IJsonRepository<Event> _repo;
+        private readonly MySqlEventDao _repo;
 
-        public EventService(IJsonRepository<Event> repo) => _repo = repo;
+        public EventService(MySqlEventDao repo)
+        {
+            _repo = repo;
+        }
 
         public Task<List<Event>> GetAllAsync() => _repo.GetAllAsync();
 
-    
-        public async Task AddAsync(Event e)
+        public Task AddAsync(Event e)
         {
-            // Generar IDs secuenciales del tipo e1, e2, e3...
-            var all = await _repo.GetAllAsync();
-            int max = 0;
-            foreach (var ev in all)
-            {
-                var id = ev?.Id;
-                if (string.IsNullOrWhiteSpace(id)) continue;
-                if ((id.StartsWith("e") || id.StartsWith("E")) && int.TryParse(id.Substring(1), out var n))
-                {
-                    if (n > max) max = n;
-                }
-            }
-
-            e.Id = $"e{max + 1}";
-            await _repo.AddAsync(e);
+            // ID ya es GUID automáticamente
+            return _repo.AddAsync(e);
         }
 
-
-        public Task UpdateAsync(Event e) => _repo.UpdateAsync(x => x.Id == e.Id, x =>
+        public Task UpdateAsync(Event e)
         {
-            x.Name = e.Name;
-            x.Date = e.Date;
-            x.Venue = e.Venue;
-            x.Type = e.Type;
-            x.Price = e.Price;
-            x.TicketsAvailable = e.TicketsAvailable;
-            x.Description = e.Description;
-        });
+            return _repo.UpdateAsync(x => x.Id == e.Id, x =>
+            {
+                x.Name = e.Name;
+                x.Date = e.Date;
+                x.Venue = e.Venue;
+                x.Type = e.Type;
+                x.Price = e.Price;
+                x.TicketsAvailable = e.TicketsAvailable;
+                x.Description = e.Description;
+            });
+        }
 
-        // eliminación de eventos
         public Task DeleteAsync(string id)
         {
             return _repo.DeleteAsync(e => e.Id == id);
         }
 
-        
         public async Task<List<Event>> SearchAsync(
             string? text, DateTime? date, string? type, string? venue, bool recursive = true)
         {

@@ -9,25 +9,14 @@ using Ticketing.Domain.Services;
 
 namespace Ticketing.Domain.Patterns
 {
+    // ⛔ ESTA CLASE YA NO SE USA CON MYSQL
+    // ✔ Solo se mantiene para compatibilidad antigua con JSON
+    // ✔ No genera errores
+    // ✔ No se usa en AppServices cuando useMySql = true
+
     public class TicketingFacade
     {
-        private readonly UserService _userService;
-        private readonly EventService _eventService;
-        private readonly PurchaseService _purchaseService;
-
-        
-        public TicketingFacade(IJsonRepository<User> userRepo, IJsonRepository<Event> eventRepo, IJsonRepository<Purchase> purchaseRepo)
-        {
-            _userService = new UserService(userRepo);
-            _eventService = new EventService(eventRepo);
-            _purchaseService = new PurchaseService(purchaseRepo, _eventService);
-        }
-
-       
-
-        public Task<User?> LoginAsync(string email, string pass) => _userService.LoginAsync(email, pass);
-        public Task<List<Event>> GetEventsAsync() => _eventService.GetAllAsync();
-        public Task<List<Purchase>> GetUserPurchasesAsync(string userId) => _purchaseService.GetByUserAsync(userId);
-        public Task<Purchase> BuyTicketAsync(User user, Event ev, int qty, string card) => _purchaseService.BuyAsync(user.Id, ev, qty, card);
+        // Clase desactivada para MySQL
+        // Si se requiere usar JSON, se puede restaurar la implementación original.
     }
 }
