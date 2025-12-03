@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using Ticketing.Domain.Data;
 using Ticketing.Domain.Models;
-using Ticketing.Domain.Patterns;
 using Ticketing.Domain.Services;
 using Ticketing.Patterns;
-
+using Ticketing.Domain.Patterns;
 
 namespace Ticketing.WinForms
 {
@@ -19,34 +14,34 @@ namespace Ticketing.WinForms
         public UserService UserService { get; }
         public PurchaseService PurchaseService { get; }
 
-        public TicketingFacade Facade { get; }
-
-        // Notifier para la UI
+        // Notificador para la UI
         public INotifier Notifier { get; }
 
-        public AppServices(string dataPath)
+        // Facade ya no se usa con MySQL, pero lo dejamos nullable
+        public TicketingFacade? Facade { get; }
+
+        public AppServices(string dataPath, string mysqlConnectionString)
         {
+            // Por si algún día quieres seguir guardando JSON de respaldo
             Directory.CreateDirectory(dataPath);
 
-            var usersPath = Path.Combine(dataPath, "users.json");
-            var eventsPath = Path.Combine(dataPath, "events.json");
-            var purchasesPath = Path.Combine(dataPath, "purchases.json");
+            Notifier = new Notifier();
 
-            // Usamos el Factory Method para crear repositorios (pasar el tipo de modelo, no la interfaz)
-            var userRepo = RepositoryFactory.Create<User>(usersPath);
-            var eventRepo = RepositoryFactory.Create<Event>(eventsPath);
-            var purchaseRepo = RepositoryFactory.Create<Purchase>(purchasesPath);
+            // Conexión MySQL
+            string conn = mysqlConnectionString;
 
-            // Servicios clásicos
+            // DAOs MySQL
+            var userRepo = new MySqlUserDao(conn);
+            var eventRepo = new MySqlEventDao(conn);
+            var purchaseRepo = new MySqlPurchaseDao(conn);
+
+            // Services MySQL
             UserService = new UserService(userRepo);
             EventService = new EventService(eventRepo);
             PurchaseService = new PurchaseService(purchaseRepo, EventService);
 
-            // Notifier
-            Notifier = new Notifier();
-
-            // Facade
-            Facade = new TicketingFacade(userRepo, eventRepo, purchaseRepo);
+            // Con MySQL no usamos Facade JSON
+            Facade = null;
         }
     }
 }

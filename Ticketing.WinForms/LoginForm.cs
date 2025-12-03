@@ -77,6 +77,6 @@ namespace Ticketing.WinForms
                     txtEmail.Focus();
                 }
             }
-            }
+        }
     }
 }

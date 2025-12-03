@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Ticketing.Domain.Models;
@@ -28,6 +29,14 @@ namespace Ticketing.WinForms
                 string.IsNullOrWhiteSpace(password))
             {
                 MessageBox.Show("Por favor complete todos los campos obligatorios.", "Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validar formato de correo electrónico
+            if (!Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+            {
+                MessageBox.Show("Por favor ingrese un correo electrónico válido.", "Validación",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }

@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using Ticketing.Domain.Models;
 using Ticketing.Domain.Patterns;
 using Ticketing.Domain.Services;
-using Ticketing.WinForms.Data; 
+using Ticketing.WinForms.Data;
 
 namespace Ticketing.WinForms
 {
@@ -117,7 +117,7 @@ namespace Ticketing.WinForms
             }
         }
 
-  
+
 
         // Editar evento
         private async void btnEditEvent_Click(object sender, EventArgs e)
